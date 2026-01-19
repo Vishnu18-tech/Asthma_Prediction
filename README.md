@@ -20,16 +20,5 @@ This project aims to predict whether a patient has asthma using clinical, lifest
 
 ---
 
-
-## 🖼️ Model Performance Screenshots
-
-### Logistic Regression Metrics
-![Logistic Regression Metrics](assets/Screenshot%202026-01-18%20234034.png)
-
-### Support Vector Machine (SVM) Metrics
-![SVM Metrics]([assets/svm_metrics.png](https://github.com/Vishnu18-tech/Asthma_Prediction/blob/main/assets/Screenshot%202026-01-18%20234252.png))
-
----
-
 ## Observation
 **Logistic Regression and SVM produced identical results, indicating that the dataset is close to linearly separable after preprocessing and class balancing.**
