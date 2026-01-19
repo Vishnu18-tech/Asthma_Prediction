@@ -23,7 +23,7 @@ Both models were trained using the same preprocessing pipeline for fair comparis
 ## 🖼️ Model Performance Screenshots
 
 ### Logistic Regression Metrics
-![Logistic Regression Metrics](Screenshot%202026-01-18%20234034.png)
+![Logistic Regression Metrics](assets/Screenshot%202026-01-18%20234034.png)
 
 ### Support Vector Machine (SVM) Metrics
 ![SVM Metrics](assets/svm_metrics.png)
