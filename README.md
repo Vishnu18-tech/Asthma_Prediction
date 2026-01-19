@@ -12,13 +12,14 @@ This project aims to predict whether a patient has asthma using clinical, lifest
 
 ---
 
-## 🤖 Models Implemented
-- **Logistic Regression**
-- **Support Vector Machine (SVM)**
+## 🖼️ Model Performance Screenshots
 
-Both models were trained using the same preprocessing pipeline for fair comparison.
+![Metrics](assets/Screenshot%202026-01-18%20234034.png)
+
+![Metrics](assets/Screenshot%202026-01-18%20234252.png)
 
 ---
+
 
 ## 🖼️ Model Performance Screenshots
 
