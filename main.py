@@ -30,26 +30,26 @@ model=Pipeline(steps=[
 model.fit(X_train,y_train)
 y_pred=model.predict(X_test)
 y_proba=model.predict_proba(X_test)[:,1]
-#print(f"Accuracy : {accuracy_score(y_test,y_pred)}")
-#print(f"F1 Score : {f1_score(y_test,y_pred)}")
-#print(f"roc_auc_score : {roc_auc_score(y_test,y_proba)}")
-#print(f"Classification_Report : \n{classification_report(y_test,y_pred)}")
-#print(f"Confusion_Matrix : \n{confusion_matrix(y_test,y_pred)}")
+print(f"Accuracy(LR) : {accuracy_score(y_test,y_pred)}")
+print(f"F1 Score(LR) : {f1_score(y_test,y_pred)}")
+print(f"roc_auc_score(LR) : {roc_auc_score(y_test,y_proba)}")
+print(f"Classification_Report(LR) : \n{classification_report(y_test,y_pred)}")
+print(f"Confusion_Matrix(LR) : \n{confusion_matrix(y_test,y_pred)}")
 
 
 from sklearn.svm import SVC
 model_svm=Pipeline(steps=[
     ('preprocessor',preprocessing),
-    ('classifier',SVC(class_weight='balanced',kernel='rbf',C=1.0))
+    ('classifier',SVC(class_weight='balanced',kernel='rbf',C=1.0,probability=True))
 ])
 model_svm.fit(X_train,y_train)
-y_pred_svm=model.predict(X_test)
-y_proba_svm=model.predict_proba(X_test)[:,1]
-print(f"Accuracy : {accuracy_score(y_test,y_pred_svm)}")
-print(f"F1 Score : {f1_score(y_test,y_pred_svm)}")
-print(f"roc_auc_score : {roc_auc_score(y_test,y_proba_svm)}")
-print(f"Classification_Report : \n{classification_report(y_test,y_pred_svm)}")
-print(f"Confusion_Matrix : \n{confusion_matrix(y_test,y_pred_svm)}")
+y_pred_svm=model_svm.predict(X_test)
+y_proba_svm=model_svm.predict_proba(X_test)[:,1]
+print(f"Accuracy(SVC) : {accuracy_score(y_test,y_pred_svm)}")
+print(f"F1 Score(SVC) : {f1_score(y_test,y_pred_svm)}")
+print(f"roc_auc_score(SVC) : {roc_auc_score(y_test,y_proba_svm)}")
+print(f"Classification_Report(SVC) : \n{classification_report(y_test,y_pred_svm)}")
+print(f"Confusion_Matrix(SVC) : \n{confusion_matrix(y_test,y_pred_svm)}")
 
 
 rocauc=roc_auc_score(y_test,y_proba)
@@ -61,5 +61,16 @@ plt.legend(loc='best')
 plt.grid(True)
 plt.xlabel("FPR")
 plt.ylabel("TPR")
-plt.title("ROC CURVE")
+plt.title("ROC CURVE(LR)",fontweight='bold')
+plt.show()
+rocauc=roc_auc_score(y_test,y_proba_svm)
+fpr,tpr,thresholds=roc_curve(y_test,y_proba_svm)
+plt.figure()
+plt.plot(fpr,tpr,label='area=%0.2f'%roc_auc_score(y_test,y_proba_svm))
+plt.plot([0,1],[0,1],'r--')
+plt.legend(loc='best')
+plt.grid(True)
+plt.xlabel("FPR")
+plt.ylabel("TPR")
+plt.title("ROC CURVE(SVC)",fontweight='bold')
 plt.show()
